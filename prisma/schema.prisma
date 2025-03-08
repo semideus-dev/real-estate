@@ -64,3 +64,69 @@ model Account {
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
+
+enum PropertyType {
+  HOUSE
+  FLAT
+  LAND
+}
+
+enum PropertyFacing {
+  NORTH
+  SOUTH
+  EAST
+  WEST
+}
+
+enum ListingType {
+  SALE
+  RENT
+}
+
+enum PropertyCondition {
+  NEW
+  OLD
+  REFURNISHED
+}
+
+model Property {
+  id           String            @id @default(cuid()) @map("_id")
+  isAvailable  Boolean           @default(true)
+  isCornerPlot Boolean           @default(false)
+  socialId     String?           @unique
+  thumbnailUrl String?
+  photosUrls   String?
+  videoUrl     String?
+  lat          String?
+  long         String?
+  name         String
+  description  String
+  address      String
+  city         String
+  state        String
+  postalCode   Int
+  beds         Int
+  baths        Int
+  price        Float
+  area         Float
+  condition    PropertyCondition
+  listing      ListingType
+  facing       PropertyFacing
+}
+
+enum LeadStatus {
+  HOT
+  WARM
+  COLD
+}
+
+model Lead {
+  id                String       @id @default(cuid()) @map("_id")
+  status            LeadStatus
+  listing           ListingType
+  userFullName      String
+  userFatherName    String
+  userAddress       String
+  userBudget        String
+  propertiesScouted String[]
+}
