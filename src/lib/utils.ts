@@ -15,18 +15,18 @@ export function formatPrice(num: number): string {
 
   // Split the number into parts before and after the decimal point
   const parts = numStr.split(".");
-  let integerPart = parts[0];
+  const integerPart = parts[0];
   const decimalPart = parts.length > 1 ? `.${parts[1]}` : "";
 
   // Format the integer part according to the Indian system
   let lastThree = integerPart.slice(-3);
-  let otherNumbers = integerPart.slice(0, -3);
+  const otherNumbers = integerPart.slice(0, -3);
 
   if (otherNumbers !== "") {
     lastThree = "," + lastThree;
   }
 
-  let result =
+  const result =
     otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") +
     lastThree +
     decimalPart;

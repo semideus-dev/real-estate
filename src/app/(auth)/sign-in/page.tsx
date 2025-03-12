@@ -70,6 +70,7 @@ export default function SignInPage() {
 
       setPending(false);
     } catch (e) {
+      console.log(e)
       toast("Sign in failed!", {
         description: "Please check your credientials and try again.",
       });
@@ -135,7 +136,7 @@ export default function SignInPage() {
 
       <div className="mt-6 text-center">
         <p className="text-sm text-muted-foreground">
-          Don't have an account?{" "}
+          Don&apos;t have an account?
           <Link
             href="/sign-up"
             className="text-zinc-900 hover:underline underline-offset-4 font-medium"
