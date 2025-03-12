@@ -121,12 +121,9 @@ enum LeadStatus {
 }
 
 model Lead {
-  id                String       @id @default(cuid()) @map("_id")
-  status            LeadStatus
-  listing           ListingType
-  userFullName      String
-  userFatherName    String
-  userAddress       String
-  userBudget        String
-  propertiesScouted String[]
+  id           String     @id @default(cuid()) @map("_id")
+  status       LeadStatus
+  userFullName String
+  userPhone    String
+  propertyId   String
 }

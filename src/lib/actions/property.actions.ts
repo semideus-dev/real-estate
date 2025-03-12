@@ -19,6 +19,13 @@ interface PropertyData {
   condition: "OLD" | "NEW" | "REFURNISHED";
 }
 
+interface PropertyLeadData {
+  userFullName: string;
+  userPhone: string;
+  status: "WARM" | "COLD" | "HOT";
+  propertyId: string;
+}
+
 export async function addProperty(data: PropertyData) {
     const refinedData = {
       ...data,
@@ -41,6 +48,25 @@ export async function getProperties() {
   try {
     const properties = await db.property.findMany();
     return properties;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function createPropertyLead(data: PropertyLeadData) {
+  try {
+    await db.lead.create({
+      data
+    })
+  } catch (error) {
+    console.log(error);
+  }
+} 
+
+export async function getLeads() {
+  try {
+    const leads = await db.lead.findMany();
+    return leads;
   } catch (error) {
     console.log(error);
   }
