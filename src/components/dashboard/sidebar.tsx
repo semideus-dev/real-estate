@@ -21,12 +21,6 @@ export function Sidebar({ className, session }: SidebarProps) {
   const [isMobile, setIsMobile] = useState(false);
   const pathname = usePathname();
 
-  if (!session) {
-    return null;
-  }
-
-  const user = session.user;
-
   // Handle responsive behavior
   useEffect(() => {
     const checkScreenSize = () => {
@@ -43,6 +37,12 @@ export function Sidebar({ className, session }: SidebarProps) {
     // Cleanup
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
+
+  if (!session) {
+    return null;
+  }
+
+  const user = session.user;
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);

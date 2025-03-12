@@ -72,6 +72,7 @@ export default function SignUpPage() {
       );
       setPending(false);
     } catch (e) {
+      console.log(e)
       toast("Account creation failed!", {
         description: "Please try again later.",
       });
@@ -147,7 +148,7 @@ export default function SignUpPage() {
 
       <div className="mt-6 text-center">
         <p className="text-sm text-muted-foreground">
-          Don't have an account?{" "}
+          Don&apos;t have an account?
           <Link
             href="/sign-in"
             className="text-zinc-900 hover:underline underline-offset-4 font-medium"
