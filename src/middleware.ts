@@ -6,7 +6,7 @@ import type { Session } from "@/lib/auth";
 const authRoutes = ["/sign-in", "/sign-up"];
 const passwordRoutes = ["/forgot-password", "/reset-password"];
 
-export default async function authMiddleware(request: NextRequest) {
+export default async function middleware(request: NextRequest) {
   const pathName = request.nextUrl.pathname;
   const isAuthRoute = authRoutes.includes(pathName);
   const isPasswordRoute = passwordRoutes.includes(pathName);
